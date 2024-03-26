@@ -1,0 +1,10 @@
+/* In your CSS file */
+.card-link {
+  color: inherit; /* Use the default text color */
+  text-decoration: none; /* Remove underline */
+  transition: transform 0.3s;
+}
+
+.card-link:hover {
+  transform: scale(1.04);
+}
