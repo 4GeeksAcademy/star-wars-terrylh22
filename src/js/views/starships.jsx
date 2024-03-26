@@ -10,7 +10,7 @@ export const Starships = () => {
       <h1>Starships</h1>
       <div className="d-flex flex-wrap justify-content-start">
         {store.starships.map((current, index) => (
-          <DataCard key={index} type="vehicles" data={current} />
+          <DataCard key={index} type="starships" data={current} />
         ))}
       </div>
     </div>
