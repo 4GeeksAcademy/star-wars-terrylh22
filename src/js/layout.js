@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
 import { People } from "./views/people.jsx";
+import { specificPerson } from "./views/specificPerson.jsx";
 import { Planets } from "./views/planets.jsx";
 import { Vehicles } from "./views/vehicles.jsx";
 import { Starships } from "./views/starships.jsx";
@@ -25,6 +26,7 @@ const Layout = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/people" element={<People />} />
+            <Route path="/people/:id" element={<specificPerson />} />
             <Route path="/planets" element={<Planets />} />
             <Route path="/vehicles" element={<Vehicles />} />
             <Route path="/starships" element={<Starships />} />

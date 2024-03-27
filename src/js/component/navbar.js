@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/navbar.css";
 
 export const Navbar = () => {
   return (
@@ -18,6 +19,7 @@ export const Navbar = () => {
           </button>
           <a className="navbar-brand" href="#">
             Star Wars Databank
+            <i class="fab fa-jedi-order" style={{ marginLeft: "10px" }}></i>
           </a>
           <div
             className="offcanvas offcanvas-start bg-dark"
@@ -31,6 +33,7 @@ export const Navbar = () => {
                 id="offcanvasDarkNavbarLabel"
               >
                 Star Wars Databank
+                <i class="fab fa-jedi-order" style={{ marginLeft: "10px" }}></i>
               </h5>
               <button
                 type="button"
@@ -44,9 +47,9 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link to="/">
                     <a
-                      className="nav-link active"
+                      className="nav-link active nav-decoration-none"
                       aria-current="page"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "30px" }}
                     >
                       Home
                     </a>
@@ -55,9 +58,9 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link to="/people">
                     <a
-                      className="nav-link"
+                      className="nav-link nav-decoration-none"
                       aria-current="page"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "30px" }}
                     >
                       People
                     </a>
@@ -66,9 +69,9 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link to="/planets">
                     <a
-                      className="nav-link"
+                      className="nav-link nav-decoration-none"
                       aria-current="page"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "30px" }}
                     >
                       Planets
                     </a>
@@ -77,22 +80,22 @@ export const Navbar = () => {
                 <li className="nav-item">
                   <Link to="/vehicles">
                     <a
-                      className="nav-link"
+                      className="nav-link nav-decoration-none"
                       aria-current="page"
                       href="#"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "30px" }}
                     >
                       Vehicles
                     </a>
                   </Link>
                 </li>
-                <li className="nav-item">
+                <li className="nav-item ">
                   <Link to="/starships">
                     <a
-                      className="nav-link"
+                      className="nav-link nav-decoration-none"
                       aria-current="page"
                       href="#"
-                      style={{ fontSize: "20px" }}
+                      style={{ fontSize: "30px" }}
                     >
                       Starships
                     </a>

@@ -7,7 +7,7 @@ export const People = () => {
 
   return (
     <div className="container-fluid mt-5 pt-4 justify-content-center">
-      <h1>People</h1>
+      <h1 className="text-white">People</h1>
       <div className="d-flex flex-wrap justify-content-start">
         {store.people.map((current, index) => (
           <DataCard key={index} type="people" data={current} />

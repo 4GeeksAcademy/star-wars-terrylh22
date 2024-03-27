@@ -7,7 +7,7 @@ export const Vehicles = () => {
 
   return (
     <div className="container-fluid mt-5 pt-4">
-      <h1>Vehicles</h1>
+      <h1 className="text-white">Vehicles</h1>
       <div className="d-flex flex-wrap justify-content-start">
         {store.vehicles.map((current, index) => (
           <DataCard key={index} type="vehicles" data={current} />
