@@ -69,6 +69,20 @@ const getState = ({ getStore, getActions, setStore }) => {
           });
         setStore({ starships: response.results });
       },
+      addFavorite: async (name, type) => {
+        const store = getStore();
+        console.log(
+          "checking if in favorites, will add to store if not already in favorites"
+        );
+        const isFavorite = store.favorites.find((item) => item.name === name);
+        const foundThing = store[type].find((item) => item.name === name);
+        if (isFavorite === undefined) {
+          if (foundThing) {
+            setStore({ favorites: [...store.favorites, foundThing] });
+            console.log("added to store");
+          }
+        }
+      },
     },
   };
 };

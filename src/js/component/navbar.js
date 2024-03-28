@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.css";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
   return (
     <>
       <nav className="navbar navbar-dark bg-dark fixed-top">
@@ -101,6 +103,25 @@ export const Navbar = () => {
                     </a>
                   </Link>
                 </li>
+                <div class="dropdown mt-3">
+                  <a
+                    class="btn btn-secondary dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Favorites
+                  </a>
+
+                  <ul class="dropdown-menu">
+                    {store.favorites.map((current, index) => (
+                      <a class="dropdown-item" key={index}>
+                        {current.name}
+                      </a>
+                    ))}
+                  </ul>
+                </div>
               </ul>
               {/* <form className="d-flex mt-3" role="search">
                 <input

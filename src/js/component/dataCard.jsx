@@ -12,13 +12,13 @@ const photoUrls = {
 };
 
 const photoStyle = {
-  people: { height: "450px", width: "100%" },
-  planets: { height: "300px", width: "100%" },
+  people: { height: "500px", width: "100%" },
+  planets: { height: "400px", width: "100%" },
   starships: { height: "250px", width: "100%" },
   vehicles: { height: "250px", width: "100%" },
 };
 
-const DataCard = ({ type, data }) => {
+const DataCard = ({ type, data, addFavoriteAction }) => {
   const imageUrl = `${photoUrls[type]}${data.uid}.jpg`;
   const navigate = useNavigate();
 
@@ -46,8 +46,11 @@ const DataCard = ({ type, data }) => {
             <div>
               <h5 className="card-title text-white">{data.name}</h5>
             </div>
-            <a href="#" className="btn btn-danger ms-2">
-              <i className="far fa-heart"></i>
+            <a className="btn btn-danger ms-2">
+              <i
+                className="far fa-heart"
+                onClick={() => addFavoriteAction(data.name, type)}
+              ></i>
             </a>
           </div>
         </div>
