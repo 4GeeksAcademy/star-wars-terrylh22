@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-export function SpecificPerson() {
+export function SpecificPlanet() {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [personData, setPersonData] = useState({});
+  const [planetData, setPlanetData] = useState({});
 
-  const fetchThisPerson = async (id) => {
-    const response = await fetch(`https://www.swapi.tech/api/people/${id}`)
+  const fetchThisPlanet = async (id) => {
+    const response = await fetch(`https://www.swapi.tech/api/planets/${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not okay");
@@ -19,46 +19,49 @@ export function SpecificPerson() {
         console.error(err);
       });
     console.log(response.result.properties);
-    setPersonData(response.result.properties);
+    setPlanetData(response.result.properties);
     return response.result.properties;
   };
 
   useEffect(() => {
-    fetchThisPerson(id);
+    fetchThisPlanet(id);
   }, []);
 
   return (
     <div className="container-fluid mt-5 pt-5">
       <div className="d-flex justify-content-center">
         <img
-          src={`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`}
+          src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
           style={{ borderRadius: "20px" }}
         ></img>
         <div className="information-group">
           <ul style={{ listStyleType: "none" }}>
             <li className="text-white" style={{ fontSize: "50px" }}>
-              {personData.name}
+              {planetData.name}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Height: {personData.height}
+              Diameter: {planetData.diameter}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Mass: {personData.mass}
+              Rotation Period: {planetData.rotation_period}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Hair Color: {personData.hair_color}
+              Orbital Period: {planetData.orbital_period}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Skin Color: {personData.skin_color}
+              Gravity: {planetData.gravity}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Eye Color: {personData.eye_color}
+              Population: {planetData.population}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Birth Year: {personData.birth_year}
+              Climate: {planetData.climate}
             </li>
             <li className="text-white" style={{ fontSize: "30px" }}>
-              Gender: {personData.gender}
+              Terrain: {planetData.terrain}
+            </li>
+            <li className="text-white" style={{ fontSize: "30px" }}>
+              Surface Water: {planetData.surface_water}
             </li>
           </ul>
         </div>
@@ -71,21 +74,21 @@ export function SpecificPerson() {
 //     "message": "ok",
 //     "result": {
 //         "properties": {
-//             "height": "172",
-//             "mass": "77",
-//             "hair_color": "blond",
-//             "skin_color": "fair",
-//             "eye_color": "blue",
-//             "birth_year": "19BBY",
-//             "gender": "male",
-//             "created": "2024-03-24T14:28:54.493Z",
-//             "edited": "2024-03-24T14:28:54.493Z",
-//             "name": "Luke Skywalker",
-//             "homeworld": "https://www.swapi.tech/api/planets/1",
-//             "url": "https://www.swapi.tech/api/people/1"
+//             "diameter": "10465",
+//             "rotation_period": "23",
+//             "orbital_period": "304",
+//             "gravity": "1 standard",
+//             "population": "200000",
+//             "climate": "arid",
+//             "terrain": "desert",
+//             "surface_water": "1",
+//             "created": "2024-03-27T16:09:25.617Z",
+//             "edited": "2024-03-27T16:09:25.617Z",
+//             "name": "Tatooine",
+//             "url": "https://www.swapi.tech/api/planets/1"
 //         },
-//         "description": "A person within the Star Wars universe",
-//         "_id": "5f63a36eee9fd7000499be42",
+//         "description": "A planet.",
+//         "_id": "5f7254c11b7dfa00041c6fae",
 //         "uid": "1",
 //         "__v": 0
 //     }

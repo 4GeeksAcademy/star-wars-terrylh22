@@ -102,7 +102,7 @@ export const Navbar = () => {
                   </Link>
                 </li>
               </ul>
-              <form className="d-flex mt-3" role="search">
+              {/* <form className="d-flex mt-3" role="search">
                 <input
                   className="form-control me-2"
                   type="search"
@@ -112,7 +112,7 @@ export const Navbar = () => {
                 <button className="btn btn-danger" type="submit">
                   Search
                 </button>
-              </form>
+              </form> */}
             </div>
           </div>
         </div>
