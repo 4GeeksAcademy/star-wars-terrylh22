@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/navbar.css";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const navigate = useNavigate();
   const { store, actions } = useContext(Context);
   return (
     <>
@@ -105,7 +106,7 @@ export const Navbar = () => {
                 </li>
                 <div class="dropdown mt-3">
                   <a
-                    class="btn btn-secondary dropdown-toggle"
+                    className="btn btn-secondary dropdown-toggle"
                     href="#"
                     role="button"
                     data-bs-toggle="dropdown"
@@ -114,10 +115,22 @@ export const Navbar = () => {
                     Favorites
                   </a>
 
-                  <ul class="dropdown-menu">
+                  <ul className="dropdown-menu">
                     {store.favorites.map((current, index) => (
-                      <a class="dropdown-item" key={index}>
-                        {current.name}
+                      <a className="dropdown-item" key={index}>
+                        <div className="d-flex justify-content-between align-items-center">
+                          <p
+                            onClick={() =>
+                              navigate(`/${current.types}/${current.uid}`)
+                            }
+                          >
+                            {current.name}
+                          </p>
+                          <i
+                            className="fas fa-trash-alt"
+                            onClick={() => actions.deleteFavorite(current.name)}
+                          ></i>
+                        </div>
                       </a>
                     ))}
                   </ul>

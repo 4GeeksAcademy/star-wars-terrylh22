@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../store/appContext";
 import "../../styles/dataCard.css";
 import { useNavigate } from "react-router-dom";
 
@@ -12,15 +13,29 @@ const photoUrls = {
 };
 
 const photoStyle = {
-  people: { height: "500px", width: "100%" },
-  planets: { height: "400px", width: "100%" },
-  starships: { height: "250px", width: "100%" },
-  vehicles: { height: "250px", width: "100%" },
+  // people: { height: "500px", width: "100%" },
+  planets: { height: "300px", width: "100%" },
+  // starships: { height: "250px", width: "100%" },
+  // vehicles: { height: "250px", width: "100%" },
 };
 
-const DataCard = ({ type, data, addFavoriteAction }) => {
+const DataCard = ({ type, data }) => {
   const imageUrl = `${photoUrls[type]}${data.uid}.jpg`;
   const navigate = useNavigate();
+  const { store, actions } = useContext(Context);
+
+  const isFavorite = store.favorites.some(
+    (favorite) => favorite.name === data.name
+  );
+
+  const handleFavoriteClick = (e) => {
+    e.stopPropagation(); // Prevent the click event from bubbling up
+    if (isFavorite) {
+      actions.deleteFavorite(data.name);
+    } else {
+      actions.addFavorite(data.name, type);
+    }
+  };
 
   return (
     <div className="p-2 col-6 col-md-4 col-lg-3 col-xl-2">
@@ -46,11 +61,8 @@ const DataCard = ({ type, data, addFavoriteAction }) => {
             <div>
               <h5 className="card-title text-white">{data.name}</h5>
             </div>
-            <a className="btn btn-danger ms-2">
-              <i
-                className="far fa-heart"
-                onClick={() => addFavoriteAction(data.name, type)}
-              ></i>
+            <a className="btn btn-danger ms-2" onClick={handleFavoriteClick}>
+              <i className={`fa${isFavorite ? "s" : "r"} fa-heart`}></i>
             </a>
           </div>
         </div>

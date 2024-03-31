@@ -10,7 +10,12 @@ export const Vehicles = () => {
       <h1 className="text-white">Vehicles</h1>
       <div className="d-flex flex-wrap justify-content-start">
         {store.vehicles.map((current, index) => (
-          <DataCard key={index} type="vehicles" data={current} />
+          <DataCard
+            key={index}
+            type="vehicles"
+            data={current}
+            addFavoriteAction={actions.addFavorite}
+          />
         ))}
       </div>
     </div>

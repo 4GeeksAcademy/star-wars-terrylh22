@@ -76,11 +76,26 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
         const isFavorite = store.favorites.find((item) => item.name === name);
         const foundThing = store[type].find((item) => item.name === name);
+
         if (isFavorite === undefined) {
           if (foundThing) {
+            foundThing.types = type;
             setStore({ favorites: [...store.favorites, foundThing] });
             console.log("added to store");
           }
+        }
+      },
+      deleteFavorite: async (name) => {
+        const store = getStore();
+        console.log(
+          "checking if in favorites, will remove from store if found"
+        );
+        const updatedFavorites = store.favorites.filter(
+          (item) => item.name !== name
+        );
+        if (updatedFavorites.length !== store.favorites.length) {
+          setStore({ favorites: updatedFavorites });
+          console.log("removed from store");
         }
       },
     },
